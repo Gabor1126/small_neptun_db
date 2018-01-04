@@ -9,10 +9,14 @@ CREATE OR REPLACE PACKAGE BODY p_organization IS
       INSERT INTO t_institution t
         (t.name,
         t.short_name,
+		t.version,
+		t.dml_flag,
         t.modified_by)
       VALUES
         (p_name
         ,p_short_name
+		,1
+		,'I'
         ,user);
         COMMIT;
     EXCEPTION
@@ -36,6 +40,8 @@ CREATE OR REPLACE PACKAGE BODY p_organization IS
           UPDATE t_institution t
             SET t.name = p_name,
             t.short_name = p_short_name,
+			t.version = t.version + 1,
+			t.dml_flag = 'U',
             t.modified_by = user
             WHERE t.id = p_id;
             COMMIT;
@@ -67,11 +73,15 @@ CREATE OR REPLACE PACKAGE BODY p_organization IS
             (t.name,
             t.short_name,
             t.insitution_id,
+			t.version,
+			t.dml_flag,
             t.modified_by)
           VALUES
             (p_name
             ,p_short_name
             ,p_insitution_id
+			,1
+			,'I'
             ,user);
             COMMIT;
       END IF;
@@ -103,6 +113,8 @@ CREATE OR REPLACE PACKAGE BODY p_organization IS
             SET t.name = p_name,
             t.short_name = p_short_name,
             t.insitution_id = p_insitution_id,
+			t.version = t.version + 1,
+			t.dml_flag = 'U',
             t.modified_by = user
             WHERE t.id = p_id;
             COMMIT;

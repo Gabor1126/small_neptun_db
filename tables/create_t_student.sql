@@ -17,6 +17,8 @@ CREATE TABLE t_student(
        	specialization_id 			NUMBER,
         neptun_code  VARCHAR2(6) UNIQUE,
         active                NUMBER(1),
+	version 		NUMBER,
+	dml_flag 		VARCHAR2(1),
        	created_date			DATE 			DEFAULT SYSDATE NOT NULL,
         modified_by     VARCHAR2(255),
         CONSTRAINT fk_student_degrees FOREIGN KEY (degrees_id) REFERENCES t_degrees(id),

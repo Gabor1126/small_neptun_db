@@ -6,6 +6,8 @@ CREATE TABLE t_teacher_semester(
         subject_id      NUMBER 		NOT NULL,
 	year VARCHAR2(9) NOT NULL,
         semester NUMBER NOT NULL,
+	version NUMBER,
+	dml_flag VARCHAR2(1),
        	created_date			DATE			DEFAULT SYSDATE NOT NULL,
         modified_by     VARCHAR2(255),
         CONSTRAINT fk_teacher_sem_teacher FOREIGN KEY (teacher_id) REFERENCES t_teacher(id),

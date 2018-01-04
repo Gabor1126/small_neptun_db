@@ -13,6 +13,8 @@ CREATE TABLE t_teacher(
        	beggining_of_work 		DATE,
         neptun_code  VARCHAR2(6) UNIQUE,
         department_id           NUMBER NOT NULL,
+	version 		NUMBER,
+	dml_flag 		VARCHAR2(1),
        	created_date			DATE 			DEFAULT SYSDATE NOT NULL,
         modified_by     VARCHAR2(255),
         CONSTRAINT fk_teacher_department FOREIGN KEY (department_id) REFERENCES t_department(id)

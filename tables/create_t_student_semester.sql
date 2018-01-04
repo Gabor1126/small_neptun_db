@@ -8,6 +8,8 @@ CREATE TABLE t_student_semester(
 	year VARCHAR2(9) NOT NULL,
         semester NUMBER NOT NULL,
         grade NUMBER NOT NULL, 
+	version 	NUMBER,
+	dml_flag 	VARCHAR2(1),
        	created_date			DATE			DEFAULT SYSDATE NOT NULL,
         modified_by     VARCHAR2(255),
         CONSTRAINT fk_student_sem_student FOREIGN KEY (student_id) REFERENCES t_student(id),

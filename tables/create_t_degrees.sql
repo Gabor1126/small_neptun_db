@@ -5,6 +5,8 @@ CREATE TABLE t_degrees(
       	name 				VARCHAR2(80) 		NOT NULL,
         traning_level 			VARCHAR(5) 		NOT NULL,
         department_id    NUMBER NOT NULL,
+	version NUMBER,
+	dml_flag VARCHAR2(1),
         created_date			DATE 			DEFAULT SYSDATE NOT NULL,
         modified_by     VARCHAR2(255),
         CONSTRAINT fk_degrees_department FOREIGN KEY (department_id) REFERENCES t_department(id)

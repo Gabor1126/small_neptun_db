@@ -20,6 +20,8 @@ BEGIN
         degrees_id,
        	specialization_id,
         neptun_code,
+	version,
+	dml_flag,
        	created_date,
         modified_by )
    VALUES
@@ -38,6 +40,8 @@ BEGIN
         :old.degrees_id,
        	:old.specialization_id,
         :old.neptun_code,
+	:old.version,
+	'D',
       sysdate,
       user );
 

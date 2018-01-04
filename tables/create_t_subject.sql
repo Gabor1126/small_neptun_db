@@ -7,6 +7,8 @@ CREATE TABLE t_subject(
         specialization_id NUMBER,
         degrees_id NUMBER,
        	semester 			NUMBER 			NOT NULL,
+	version 			NUMBER,
+	dml_flag 			VARCHAR2(1),
        	created_date			DATE 			DEFAULT SYSDATE NOT NULL,
         modified_by     VARCHAR2(255),
         CONSTRAINT fk_subject_specialization FOREIGN KEY (specialization_id) REFERENCES t_specialization(id),

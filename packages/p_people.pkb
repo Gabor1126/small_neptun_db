@@ -34,6 +34,8 @@ CREATE OR REPLACE PACKAGE BODY p_people IS
         t.specialization_id,
         t.neptun_code,
         t.active,
+		t.version,
+		t.dml_flag,
         t.modified_by)
       VALUES
         (p_first_name,
@@ -51,6 +53,8 @@ CREATE OR REPLACE PACKAGE BODY p_people IS
         p_specialization_id,
         DBMS_RANDOM.string('x',6),
         p_active,
+		1,
+		'I',
         user);
         COMMIT;
     EXCEPTION
@@ -99,6 +103,8 @@ CREATE OR REPLACE PACKAGE BODY p_people IS
         t.degrees_id = p_degrees_id,
         t.specialization_id = p_specialization_id,
         t.active = p_active,
+		t.version = t.version + 1,
+		t.dml_flag = 'U',
         t.modified_by = user
         WHERE t.neptun_code = p_neptun_code;
         COMMIT;
@@ -201,6 +207,8 @@ CREATE OR REPLACE PACKAGE BODY p_people IS
         t.beggining_of_work,
         t.neptun_code,
         t.department_id,
+		t.version,
+		t.dml_flag,
         t.modified_by)
       VALUES
         (p_first_name,
@@ -214,6 +222,8 @@ CREATE OR REPLACE PACKAGE BODY p_people IS
         to_date(p_beggining_of_work, 'YYYY.MM.DD'),
         DBMS_RANDOM.string('x',6),
         p_department_id,
+		1,
+		'I',
         user);
         COMMIT;
     EXCEPTION
@@ -254,6 +264,8 @@ CREATE OR REPLACE PACKAGE BODY p_people IS
         t.tel = p_tel,
         t.beggining_of_work = to_date(p_beggining_of_work, 'YYYY.MM.DD'),
         t.department_id = p_department_id,
+		t.version = t.version + 1,
+		t.dml_flag = 'U',
         t.modified_by = user
         WHERE t.neptun_code = p_neptun_code;
         COMMIT;

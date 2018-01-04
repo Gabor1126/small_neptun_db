@@ -1,12 +1,12 @@
-call p_organization.proc_insert_institution('Építész intézet',
-                                'ÉI');
+call p_organization.proc_insert_institution('Villamos és informatikai',
+                                'VI');
                                 
 call p_organization.proc_update_institution(3,
                                 'Építész intézet1111111111',
                                 'ÉIII');
                         
-call p_organization.proc_insert_department('Rendzser és szoftvertechnológia tanszék',
-                               'RSZT',
+call p_organization.proc_insert_department('Mûszaki informatikai tanszék',
+                               'MIT',
                                1);
                         
 call p_organization.proc_update_department(2,
@@ -15,7 +15,7 @@ call p_organization.proc_update_department(2,
                                1);
                                
 call p_education.proc_insert_degrees('Mérnökinformatikus',
-                           'MSC',
+                           'BSC',
                             2);
 
 call p_education.proc_insert_specialization('Rendszermérnök',

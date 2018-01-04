@@ -17,11 +17,15 @@ CREATE OR REPLACE PACKAGE BODY p_education IS
             (t.name,
             t.traning_level,
             t.department_id,
+			t.version,
+			t.dml_flag,
             t.modified_by)
           VALUES
             (p_name
             ,p_traning_level
             ,p_department_id
+			,1
+			,'I'
             ,user);
             COMMIT;
       END IF;
@@ -55,11 +59,15 @@ CREATE OR REPLACE PACKAGE BODY p_education IS
             (t.name,
             t.degrees_id,
             t.department_id,
+			t.version,
+			t.dml_flag,
             t.modified_by)
           VALUES
             (p_name
             ,p_degrees_id
             ,p_department_id
+			,1
+			,'I'
             ,user);
             COMMIT;
       END IF;
@@ -100,6 +108,8 @@ CREATE OR REPLACE PACKAGE BODY p_education IS
             t.specialization_id,
             t.degrees_id,
             t.semester,
+			t.version,
+			t.dml_flag,
             t.modified_by)
           VALUES
             (p_name
@@ -107,6 +117,8 @@ CREATE OR REPLACE PACKAGE BODY p_education IS
             ,p_specialization_id
             ,p_degrees_id
             ,p_semester
+			,1
+			,'I'
             ,user);
             COMMIT;
       END IF;
@@ -139,12 +151,16 @@ CREATE OR REPLACE PACKAGE BODY p_education IS
         t.subject_id,
         t.year,
         t.semester,
+		t.version,
+		t.dml_flag,
         t.modified_by)
       VALUES
         (v_teacher_id
         ,v_subject_id
         ,p_year
         ,p_semester
+		,1
+		,'I'
         ,user);
         COMMIT;
     EXCEPTION
@@ -179,6 +195,8 @@ CREATE OR REPLACE PACKAGE BODY p_education IS
         t.year,
         t.semester,
         t.grade,
+		t.version,
+		t.dml_flag,
         t.modified_by)
       VALUES
         (v_student_id
@@ -187,6 +205,8 @@ CREATE OR REPLACE PACKAGE BODY p_education IS
         ,p_year
         ,p_semester
         ,p_grade
+		,1
+		,'I'
         ,user);
         COMMIT;
     EXCEPTION
